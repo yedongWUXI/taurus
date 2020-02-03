@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>logback</contextName>
+
+    <property name="log.path" value="C:\\opt\\data\\applogs\\taurus"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- <filter class="ch.qos.logback.classic.filter.ThresholdFilter" >
+             <level>WARN</level>
+         </filter>-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}\\background-framework_INFO.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>200MB</maxFileSize>
+            <fileNamePattern>${log.path}\\background-framework_INFO.log.%d{yyyy-MM-dd}_%i.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n
+            </pattern>
+        </encoder>
+        <!-- LevelFilter： 级别过滤器，根据日志级别进行过滤 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <!-- 用于配置符合过滤条件的操作 ACCEPT：日志会被立即处理，不再经过剩余过滤器 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 用于配置不符合过滤条件的操作 DENY：日志将立即被抛弃不再经过其他过滤器 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}\\background-framework_ERROR.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <maxFileSize>200MB</maxFileSize>
+            <fileNamePattern>${log.path}\\background-framework_ERROR.log.%d{yyyy-MM-dd}_%i.zip</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n
+            </pattern>
+        </encoder>
+        <!-- LevelFilter： 级别过滤器，根据日志级别进行过滤 -->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <!-- 用于配置符合过滤条件的操作 ACCEPT：日志会被立即处理，不再经过剩余过滤器 -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 用于配置不符合过滤条件的操作 DENY：日志将立即被抛弃不再经过其他过滤器 -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="FILE_INFO"/>
+        <appender-ref ref="FILE_ERROR"/>
+    </root>
+
+
+</configuration>

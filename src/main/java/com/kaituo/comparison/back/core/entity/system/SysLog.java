@@ -1,0 +1,40 @@
+package com.kaituo.comparison.back.core.entity.system;
+
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ *
+ * @version 2018/4/27/17:20
+ */
+@Data
+public class SysLog implements Serializable {
+
+    @TableId
+    private String id;
+
+    private String username;
+
+    private String uid;
+
+    private String ip;
+
+    private Integer ajax;
+
+    private String uri;
+
+    private String params;
+
+    private String httpMethod;
+
+    private String classMethod;
+
+    private String actionName;
+
+    private Date createDate;
+
+
+}
