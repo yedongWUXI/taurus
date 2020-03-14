@@ -26,7 +26,7 @@ import java.util.Map;
  *
  *
  */
-@Configuration
+//@Configuration
 @Log4j
 public class ShiroConfiguration {
 
