@@ -2,7 +2,6 @@ package com.kaituo.comparison.back.core.config.shiro;
 
 import com.kaituo.comparison.back.core.config.jwt.JwtFilter;
 import com.kaituo.comparison.back.core.service.global.ShiroService;
-import lombok.extern.log4j.Log4j;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.mgt.SecurityManager;
@@ -11,12 +10,13 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -27,8 +27,9 @@ import java.util.Map;
  *
  */
 //@Configuration
-@Log4j
 public class ShiroConfiguration {
+
+    private final Logger log = LoggerFactory.getLogger(ShiroConfiguration.class);
 
     @Autowired
     private ShiroService shiroService;

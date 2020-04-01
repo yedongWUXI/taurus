@@ -4,7 +4,6 @@ package com.kaituo.comparison.back.common.handler;
 import com.kaituo.comparison.back.common.bean.ResponseCode;
 import com.kaituo.comparison.back.common.bean.ResponseResult;
 import com.kaituo.comparison.back.common.exception.RequestException;
-import lombok.extern.log4j.Log4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -20,7 +19,6 @@ import java.util.List;
  *
  */
 @ControllerAdvice(basePackages = {"com.kaituo.comparison.back"})
-@Log4j
 public class GlobalDefaultExceptionHandler {
     @ExceptionHandler(value = RequestException.class)
     @ResponseBody
