@@ -20,12 +20,12 @@ spring:
   redis:
     host: 148.70.213.66
     port: 6379
-    password: 123456
     timeout: 10000
     jedis:
-      max-active: 10
-      min-idle: 3
-      max-idle: 5
+      pool:
+        max-active: 10
+        min-idle: 3
+        max-idle: 5
   aop:
     proxy-target-class: true
     auto: true
